@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="SkyCastle:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/SkyCastle_jar</output-path>
+    <root id="archive" name="SkyCastle.jar">
+      <element id="module-output" name="SkyCastle" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/slf4j/slf4j-api/1.7.25/slf4j-api-1.7.25.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/slf4j/slf4j-simple/1.7.25/slf4j-simple-1.7.25.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/fr/minuskube/inv/smart-invs/1.2.6/smart-invs-1.2.6.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../WorldManager/out/artifacts/WorldManager_jar/WorldManager.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/fr/minuskube/netherboard-core/1.2.2/netherboard-core-1.2.2.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/fr/minuskube/netherboard-bukkit/1.2.2/netherboard-bukkit-1.2.2.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>

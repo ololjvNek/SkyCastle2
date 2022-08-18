@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="ololAntiLogout">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../../ololAntiLogout/out/artifacts/ololAntiLogout_jar/ololAntiLogout.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

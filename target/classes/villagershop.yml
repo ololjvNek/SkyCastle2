@@ -1,0 +1,33 @@
+shop:
+  categories:
+    blocks:
+      name: '&c&lBlocks'
+      item: STONE
+      data: 0
+      amount: 1
+    enchantments:
+      name: '&c&lEnchantments'
+      item: ENCHANTED_BOOK
+      data: 0
+      amount: 1
+items:
+  cobblestone:
+    name: '&7Cobblestone'
+    item: COBBLESTONE
+    lore:
+      - '&cCost: &61 runa'
+    cost: 'runa:1'
+    options: 'give-cobblestone:0:1'
+    category: blocks
+    permission: none
+  sharpness:
+    name: '&7Enchantment &bSharpness &7+1'
+    item: ENCHANTED_BOOK
+    lore:
+      - '&7Your item in hand will got'
+      - '&7+1 Sharpness enchantment'
+      - '&cCost: &630 runes'
+    cost: 'runa:30'
+    options: 'addenchant-sharpness:1'
+    category: enchantments
+    permission: none

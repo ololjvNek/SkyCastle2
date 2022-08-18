@@ -1,0 +1,8 @@
+name: ololSkyCastle
+version: 1.4-ALPHA
+main: pl.ololjvNek.skycastle.Main
+authors:
+  - ololjvNek
+softdepend:
+  - LuckPerms
+  - BungeeTabListPlus

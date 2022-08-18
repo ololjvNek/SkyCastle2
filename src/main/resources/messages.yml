@@ -1,0 +1,7 @@
+messages:
+  chat:
+    prefixes:
+      teamchat: '&c[Team Chat] &7{PLAYER} &8>> &f{MESSAGE}'
+  errors:
+    safe:
+      islandterrain: '&cYou cannot do this if you are not in your island'

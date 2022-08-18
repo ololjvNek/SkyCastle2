@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="WorldManager">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../WorldManager/out/artifacts/WorldManager_jar/WorldManager.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

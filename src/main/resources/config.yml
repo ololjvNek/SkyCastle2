@@ -1,0 +1,15 @@
+globalSettings:
+  saving: FLAT
+  mysql:
+    host: 127.0.0.1
+    port: 3306
+    user: root
+    password: qwerty
+    db: root
+  playVillagerName: "&a&lPLAY SKYCASTLE"
+  player:
+    standardArmor:
+    standardEquipment:
+  autoMessages:
+    - '&cTo change this message go in to file plugins/SkyCastle/config.yml'
+    - '&cTo get one star you must got 87.5 points in each game'

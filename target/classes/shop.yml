@@ -1,0 +1,12 @@
+shops:
+  FishingRod:
+    permission: ''
+    addon: 'FishingRod'
+    cost: 1000
+    guiItem: FISHING_ROD
+    guiAmount: 1
+    guiData: 0
+    guiName: '&5Magic fishing rod'
+    guiLore:
+      - '&cThe magic fishing rod with 3 functions!'
+      - '&cType &5/magic &cto open menu of functions'
