@@ -41,7 +41,7 @@ public class MenuProvider implements InventoryProvider {
                         break;
                     case DISABLED:
                         Util.sendTitle(player, "&4&lARENA DISABLED");
-                        Util.sendSubTitle(player, "&7Arena got disabled by administrator!");
+                        Util.sendSubTitle(player, "&7Arena is disabled by administrator!");
                         break;
                 }
             }));

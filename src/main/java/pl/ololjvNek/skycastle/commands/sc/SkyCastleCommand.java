@@ -29,20 +29,20 @@ public class SkyCastleCommand extends PlayerCommand {
     @Override
     public boolean onCommand(Player p, String[] args) {
         if(args.length < 1){
-            return Util.sendMessage(p, "{PREFIX} &7Correct usage:\n{PREFIX} &c/skycastle set <lobby/redTeam/blueTeam/kapliczka/bluetron/redtron>\n{PREFIX} &c/skycastle setMap <arena> <mapName>\n{PREFIX} &c/skycastle save <world> <mapName>\n{PREFIX} &c/skycastle create <arenaName>");
+            return Util.sendMessage(p, "{PREFIX} &7Correct usage:\n{PREFIX} &c/skycastle set <lobby/redTeam/blueTeam/chapel/bluetron/redtron>\n{PREFIX} &c/skycastle setMap <arena> <mapName>\n{PREFIX} &c/skycastle save <world> <mapName>\n{PREFIX} &c/skycastle create <arenaName>");
         }
         if(args[0].equalsIgnoreCase("createVoid")){
             WorldCreator wc = new WorldCreator(args[1]);
             wc.type(WorldType.FLAT);
             wc.generatorSettings("2;0;1;");
             wc.createWorld();
-            return Util.sendMessage(p, "{PREFIX} &7Stworzono pusty swiat o nazwie &a" + args[1]);
+            return Util.sendMessage(p, "{PREFIX} &7Created a void world named &a" + args[1]);
         }
         if(args[0].equalsIgnoreCase("teleportWorld")){
             p.teleport(Bukkit.getWorld(args[1]).getSpawnLocation());
         }
         if(args[0].equalsIgnoreCase("getallitems")){
-            p.getInventory().addItem(ItemUtil.wedka, ItemUtil.runa, ItemUtil.granatPajeczy, ItemUtil.granatOdepchniecia, ItemUtil.granatOslabiajacy, ItemUtil.granatOslepiajacy, ItemUtil.granatPodbicia);
+            p.getInventory().addItem(ItemUtil.magicFishingRod, ItemUtil.runa, ItemUtil.webGrenade, ItemUtil.bounceGrenade, ItemUtil.weakeningGrenade, ItemUtil.blindnessGrenade, ItemUtil.repulsionGrenade);
         }
         if(args[0].equalsIgnoreCase("set")){
             switch (args[1].toLowerCase()){
@@ -52,16 +52,16 @@ public class SkyCastleCommand extends PlayerCommand {
                 case "blueteam":
                     createArmorStand("SkyCastle_BLUETEAM", p);
                     break;
-                case "kapliczka":
-                    createArmorStand("SkyCastle_KAPLICZKA", p);
+                case "chapel":
+                    createArmorStand("SkyCastle_CHAPEL", p);
                     break;
                 case "lobby":
                     createArmorStand("SkyCastle_LOBBY", p);
                     break;
-                case "tronred":
+                case "redtron":
                     createArmorStand("SkyCastle_REDTRON", p);
                     break;
-                case "tronblue":
+                case "bluetron":
                     createArmorStand("SkyCastle_BLUETRON", p);
                     break;
                 case "generator":
@@ -74,7 +74,7 @@ public class SkyCastleCommand extends PlayerCommand {
                     createArmorStand("SkyCastle_SHOP", p);
                     break;
             }
-            return Util.sendMessage(p, "{PREFIX} &7Setted location &c" + args[1].toUpperCase());
+            return Util.sendMessage(p, "{PREFIX} &7Set location &c" + args[1].toUpperCase());
         }
         if(args[0].equalsIgnoreCase("disable")){
             SkyCastle skyCastle = SkyCastleManager.getSkyCastle(args[1]);
@@ -103,27 +103,27 @@ public class SkyCastleCommand extends PlayerCommand {
                     u.getSkyCastle().setBlueTaking(100);
                 }
             }
-            return Util.sendMessage(p, "{PREFIX} &7Wykonano komende przymusowego zwyciestwa arenye");
+            return Util.sendMessage(p, "{PREFIX} &7Executed force win command for the arena");
         }
         if(args[0].equalsIgnoreCase("create")){
             SkyCastle skyCastle = SkyCastleManager.getSkyCastle(args[1]);
             if(skyCastle == null){
                 SkyCastleManager.createSkyCastle(args[1]);
-                return Util.sendMessage(p, "{PREFIX} &7Created new arena with name &c" + args[1]);
+                return Util.sendMessage(p, "{PREFIX} &7Created new arena named &c" + args[1]);
             }else{
-                return Util.sendMessage(p, "{PREFIX} &cThat arena is already exists!");
+                return Util.sendMessage(p, "{PREFIX} &cThat arena already exists!");
             }
         }
         if(args[0].equalsIgnoreCase("saveGlobalEq")){
             Main.getGlobalConfig().build().set("globalSettings.player.standardArmor", Base64Util.itemStackArrayToBase64(p.getInventory().getArmorContents()));
             Main.getGlobalConfig().build().set("globalSettings.player.standardEquipment", Base64Util.itemStackArrayToBase64(p.getInventory().getContents()));
             Main.getGlobalConfig().saveConfig();
-            return Util.sendMessage(p, "{PREFIX} &7Your equipment was saved as Global Equipment of SkyCastle game");
+            return Util.sendMessage(p, "{PREFIX} &7Your equipment has been saved as Global Equipment for SkyCastle game");
         }
         if(args[0].equalsIgnoreCase("save")){
             World world = Bukkit.getWorld(args[1]);
             String toName = args[2];
-            return Util.sendMessage(p, "{PREFIX} &7Message back from saving: &c" + Main.getWorldManager().copyWorldAndChangeToName(world.getName(), toName));
+            return Util.sendMessage(p, "{PREFIX} &7Response from saving: &c" + Main.getWorldManager().copyWorldAndChangeToName(world.getName(), toName));
         }
         if(args[0].equalsIgnoreCase("setMap")){
             for(String savedMap : Main.getWorldManager().savedMaps()){
@@ -135,11 +135,11 @@ public class SkyCastleCommand extends PlayerCommand {
                         Main.getArenasConfig().saveConfig();
                         return Util.sendMessage(p, "{PREFIX} &7Allocated map &a" + args[2] + " &7to arena &c" + skyCastle.getName());
                     }else{
-                        return Util.sendMessage(p, "{PREFIX} &cThat arena doesn't exists!");
+                        return Util.sendMessage(p, "{PREFIX} &cThat arena doesn't exist!");
                     }
                 }
             }
-            return Util.sendMessage(p, "{PREFIX} &cI can't find that arena! Type /skycastle savedMaps to get list of saved maps");
+            return Util.sendMessage(p, "{PREFIX} &cI couldn't find that arena! Type /skycastle savedMaps to get a list of saved maps");
         }
         if(args[0].equalsIgnoreCase("savedMaps")){
             return Util.sendMessage(p, "{PREFIX} &7List of saved maps:\n&c" + Main.getWorldManager().savedMaps().toString().replace("[", "").replace("]", ""));

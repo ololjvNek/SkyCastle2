@@ -26,6 +26,6 @@ public class DebugCommand extends PlayerCommand {
         u.addStars(1);
         p.getInventory().addItem(ItemUtil.debugStick);
         VillagerShopProvider.INVENTORY.open(p);
-        return Util.sendMessage(p, "{PREFIX} &7Dodano gwiazdke");
+        return Util.sendMessage(p, "{PREFIX} &7Added star");
     }
 }

@@ -55,7 +55,7 @@ public class PlayerJoinQuitListener implements Listener {
         p.getInventory().clear();
         p.getInventory().setItem(4, ItemUtil.menu);
         p.getInventory().setItem(6, ItemUtil.magicPearl);
-        p.getInventory().setItem(2, ItemUtil.gadzety);
+        p.getInventory().setItem(2, ItemUtil.gadgets);
         p.setScoreboard(Main.getScoreboard());
         /*try {
             u.updateWhenDataIsNotCorrect();

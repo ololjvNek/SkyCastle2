@@ -20,7 +20,7 @@ public class OptionsProvider implements InventoryProvider {
             .id("Menu")
             .provider(new OptionsProvider())
             .size(3, 9)
-            .title(Util.fixColors("&cUstawienia"))
+            .title(Util.fixColors("&cOptions"))
             .build();
 
     @Override
@@ -31,9 +31,9 @@ public class OptionsProvider implements InventoryProvider {
     @Override
     public void update(Player player, InventoryContents inventoryContents) {
         User u = UserManager.getUser(player);
-        ItemBuilder chat = new ItemBuilder(Material.PAPER, 1).setName(Util.fixColors("&8>> &6Osiagniecia")).setLore(Util.fixColors("&8>> &7Kliknij, aby przejsc do swoich osiagniec"));
-        ItemBuilder wedka = new ItemBuilder(Material.FISHING_ROD, 1).setName(Util.fixColors("&6/wedka"));
-        ItemBuilder widocznosc = new ItemBuilder(Material.SLIME_BALL, 1).setName(Util.fixColors("&8>> &6Widocznosc graczy")).setLore(Util.fixColors("&8>> &7Widocznosc: " + (u.isVision() ? "&aTAK" : "&cNIE")));
+        ItemBuilder chat = new ItemBuilder(Material.PAPER, 1).setName(Util.fixColors("&8>> &6Achievements")).setLore(Util.fixColors("&8>> &7Click to open achievement menu"));
+        ItemBuilder wedka = new ItemBuilder(Material.FISHING_ROD, 1).setName(Util.fixColors("&6/magicrod"));
+        ItemBuilder widocznosc = new ItemBuilder(Material.SLIME_BALL, 1).setName(Util.fixColors("&8>> &6Player visibility")).setLore(Util.fixColors("&8>> &7Visibility: " + (u.isVision() ? "&aON" : "&cOFF")));
         inventoryContents.set(1, 2, ClickableItem.of(chat.toItemStack(), e -> {
 
         }));

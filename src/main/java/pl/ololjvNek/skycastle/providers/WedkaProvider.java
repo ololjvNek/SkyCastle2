@@ -22,47 +22,48 @@ public class WedkaProvider implements InventoryProvider {
             .id("Wedka")
             .type(InventoryType.HOPPER)
             .provider(new WedkaProvider())
-            .title(Util.fixColors("&cTryb wedki"))
+            .title(Util.fixColors("&cMode magic rod"))
             .build();
 
     @Override
     public void init(Player player, InventoryContents inventoryContents) {
-        ItemBuilder przyciaganie = new ItemBuilder(Material.FISHING_ROD, 1).setName(Util.fixColors("&cTryb: &6Przyciaganie graczy"));
-        ItemBuilder odpychanie = new ItemBuilder(Material.FISHING_ROD, 1).setName(Util.fixColors("&cTryb: &aOdpychanie graczy"));
-        ItemBuilder doskok = new ItemBuilder(Material.FISHING_ROD, 1).setName(Util.fixColors("&cTryb: &cDoskok do gracza"));
+        ItemBuilder pulling = new ItemBuilder(Material.FISHING_ROD, 1).setName(Util.fixColors("&cMode: &6Pulling players"));
+        ItemBuilder pushing = new ItemBuilder(Material.FISHING_ROD, 1).setName(Util.fixColors("&cMode: &aPushing players"));
+        ItemBuilder leaping = new ItemBuilder(Material.FISHING_ROD, 1).setName(Util.fixColors("&cMode: &cLeaping to player"));
         final User u = UserManager.getUser(player);
         switch (u.getWedka()){
             case "PRZYCIAGANIE":
-                przyciaganie.addEnchant(Enchantment.DURABILITY, 10);
-                przyciaganie.addLoreLine(Util.fixColors("&cAktualnie ustawione"));
+                pulling.addEnchant(Enchantment.DURABILITY, 10);
+                pulling.addLoreLine(Util.fixColors("&cCurrently set"));
                 break;
             case "DOSKOK":
-                doskok.addEnchant(Enchantment.DURABILITY, 10);
-                doskok.addLoreLine(Util.fixColors("&cAktualnie ustawione"));
+                leaping.addEnchant(Enchantment.DURABILITY, 10);
+                leaping.addLoreLine(Util.fixColors("&cCurrently set"));
                 break;
             case "ODPYCHANIE":
-                odpychanie.addEnchant(Enchantment.DURABILITY, 10);
-                odpychanie.addLoreLine(Util.fixColors("&cAktualnie ustawione"));
+                pushing.addEnchant(Enchantment.DURABILITY, 10);
+                pushing.addLoreLine(Util.fixColors("&cCurrently set"));
                 break;
         }
-        inventoryContents.set(0, 0, ClickableItem.of(przyciaganie.toItemStack(), e-> {
+        inventoryContents.set(0, 0, ClickableItem.of(pulling.toItemStack(), e-> {
             u.setWedka("PRZYCIAGANIE");
-            Util.sendTitle(player, "&8{o} &cMagiczna Wedka &8{o}");
-            Util.sendSubTitle(player, "&8>> &7Tryb zmieniony na " + (u.getWedka().equals("PRZYCIAGANIE") ? "&6przyciaganie gracza do Ciebie" : (u.getWedka().equals("DOSKOK") ? "&aprzyciagniecie sie do gracza" : "&bodpychanie gracza")));
+            Util.sendTitle(player, "&8{o} &cMagic Fishing Rod &8{o}");
+            Util.sendSubTitle(player, "&8>> &7Mode changed to " + (u.getWedka().equals("PRZYCIAGANIE") ? "&6pulling players to you" : (u.getWedka().equals("DOSKOK") ? "&aleaping to a player" : "&cpushing players away")));
             player.closeInventory();
         }));
-        inventoryContents.set(0, 2, ClickableItem.of(doskok.toItemStack(), e-> {
+        inventoryContents.set(0, 2, ClickableItem.of(leaping.toItemStack(), e-> {
             u.setWedka("DOSKOK");
-            Util.sendTitle(player, "&8{o} &cMagiczna Wedka &8{o}");
-            Util.sendSubTitle(player, "&8>> &7Tryb zmieniony na " + (u.getWedka().equals("PRZYCIAGANIE") ? "&6przyciaganie gracza do Ciebie" : (u.getWedka().equals("DOSKOK") ? "&aprzyciagniecie sie do gracza" : "&bodpychanie gracza")));
+            Util.sendTitle(player, "&8{o} &cMagic Fishing Rod &8{o}");
+            Util.sendSubTitle(player, "&8>> &7Mode changed to " + (u.getWedka().equals("PRZYCIAGANIE") ? "&6pulling players to you" : (u.getWedka().equals("DOSKOK") ? "&aleaping to a player" : "&cpushing players away")));
             player.closeInventory();
         }));
-        inventoryContents.set(0, 4, ClickableItem.of(odpychanie.toItemStack(), e-> {
+        inventoryContents.set(0, 4, ClickableItem.of(pushing.toItemStack(), e-> {
             u.setWedka("ODPYCHANIE");
-            Util.sendTitle(player, "&8{o} &cMagiczna Wedka &8{o}");
-            Util.sendSubTitle(player, "&8>> &7Tryb zmieniony na " + (u.getWedka().equals("PRZYCIAGANIE") ? "&6przyciaganie gracza do Ciebie" : (u.getWedka().equals("DOSKOK") ? "&aprzyciagniecie sie do gracza" : "&bodpychanie gracza")));
+            Util.sendTitle(player, "&8{o} &cMagic Fishing Rod &8{o}");
+            Util.sendSubTitle(player, "&8>> &7Mode changed to " + (u.getWedka().equals("PRZYCIAGANIE") ? "&6pulling players to you" : (u.getWedka().equals("DOSKOK") ? "&aleaping to a player" : "&cpushing players away")));
             player.closeInventory();
         }));
+
     }
 
     @Override

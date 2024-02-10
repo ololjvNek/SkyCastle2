@@ -17,7 +17,7 @@ public class ChatCommand extends PlayerCommand {
     @Override
     public boolean onCommand(Player p, String[] args) {
         if(args.length == 0){
-            return Util.sendMessage(p, "&4Blad &8>> &7Poprawne uzycie: &c" + getUsage());
+            return Util.sendMessage(p, "&4Error &8>> &7Correct usage: &c" + getUsage());
         }
         switch (args[0]){
             case "on":

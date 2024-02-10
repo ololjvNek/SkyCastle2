@@ -158,7 +158,7 @@ public class LobbyListener implements Listener {
     public void onInteract(PlayerInteractEvent e){
         Player p = e.getPlayer();
         User u = UserManager.getUser(p);
-        if(e.getItem() != null && e.getItem().isSimilar(ItemUtil.gadzety)){
+        if(e.getItem() != null && e.getItem().isSimilar(ItemUtil.gadgets)){
             e.setCancelled(true);
             MeniProvider.INVENTORY.open(p);
             return;

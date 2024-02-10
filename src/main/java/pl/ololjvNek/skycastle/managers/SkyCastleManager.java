@@ -162,7 +162,7 @@ public class SkyCastleManager {
                                             teamRed.getInventory().setContents(skyCastle.getGlobalEquipment());
                                             skyCastle.getScoreRedTeam().addPlayer(teamRed);
                                             if(UserManager.getUser(teamRed).hasAddon("FishingRod")){
-                                                teamRed.getInventory().addItem(ItemUtil.wedka);
+                                                teamRed.getInventory().addItem(ItemUtil.magicFishingRod);
                                             }
                                         }
                                         for(Player teamBlue : skyCastle.getBlueTeam()){
@@ -182,14 +182,14 @@ public class SkyCastleManager {
                                             teamBlue.getInventory().setContents(skyCastle.getGlobalEquipment());
                                             skyCastle.getScoreBlueTeam().addPlayer(teamBlue);
                                             if(UserManager.getUser(teamBlue).hasAddon("FishingRod")){
-                                                teamBlue.getInventory().addItem(ItemUtil.wedka);
+                                                teamBlue.getInventory().addItem(ItemUtil.magicFishingRod);
                                             }
                                         }
                                         for(Location loc : skyCastle.getChests()){
                                             if(loc.getBlock().getType() != Material.CHEST){
                                                 loc.getBlock().setType(Material.CHEST);
                                                 Chest chest = (Chest) loc.getBlock().getState();
-                                                ItemStack[] randomBooster = new ItemStack[] {ItemUtil.granatPajeczy,ItemUtil.granatOdepchniecia,ItemUtil.granatOslabiajacy, ItemUtil.granatOslepiajacy,ItemUtil.granatPodbicia};
+                                                ItemStack[] randomBooster = new ItemStack[] {ItemUtil.webGrenade,ItemUtil.repulsionGrenade,ItemUtil.weakeningGrenade, ItemUtil.blindnessGrenade,ItemUtil.bounceGrenade};
                                                 ItemStack randomedBooster = randomBooster[ThreadLocalRandom.current().nextInt(randomBooster.length)];
                                                 chest.getBlockInventory().addItem(randomedBooster);
                                                 for(int i = 0; i < 5; i++){
@@ -201,7 +201,7 @@ public class SkyCastleManager {
                                                 Logger.info("Chest filled");
                                             }else if(loc.getBlock().getType() == Material.CHEST){
                                                 Chest chest = (Chest) loc.getBlock().getState();
-                                                ItemStack[] randomBooster = new ItemStack[] {ItemUtil.granatPajeczy,ItemUtil.granatOdepchniecia,ItemUtil.granatOslabiajacy, ItemUtil.granatOslepiajacy,ItemUtil.granatPodbicia};
+                                                ItemStack[] randomBooster = new ItemStack[] {ItemUtil.webGrenade,ItemUtil.repulsionGrenade,ItemUtil.weakeningGrenade, ItemUtil.blindnessGrenade,ItemUtil.bounceGrenade};
                                                 ItemStack randomedBooster = randomBooster[ThreadLocalRandom.current().nextInt(randomBooster.length)];
                                                 chest.getBlockInventory().addItem(randomedBooster);
                                                 for(int i = 0; i < 5; i++){
@@ -252,8 +252,8 @@ public class SkyCastleManager {
                 int i = 7;
                 public void run(){
                     if(i > 0){
-                        Util.sendTitle(toRespawn, "&cODRADZANIE");
-                        Util.sendSubTitle(toRespawn, "&8>> &7Odrodzisz sie za &6" + i + " &7sek.");
+                        Util.sendTitle(toRespawn, "&cRESPAWNING");
+                        Util.sendSubTitle(toRespawn, "&8>> &7You'll be respawned in &6" + i + " &7sec.");
                         i--;
                     }else{
                         this.cancel();
@@ -287,8 +287,8 @@ public class SkyCastleManager {
                 int i = 7;
                 public void run(){
                     if(i > 0){
-                        Util.sendTitle(toRespawn, "&cODRADZANIE");
-                        Util.sendSubTitle(toRespawn, "&8>> &7Odrodzisz sie za &6" + i + " &7sek.");
+                        Util.sendTitle(toRespawn, "&cRESPAWNING");
+                        Util.sendSubTitle(toRespawn, "&8>> &7You'll be respawned in &6" + i + " &7sec.");
                         i--;
                     }else{
                         this.cancel();
@@ -321,14 +321,14 @@ public class SkyCastleManager {
         for(Player lose : losers){
             lose.getInventory().clear();
             lose.getInventory().setArmorContents(new ItemStack[4]);
-            Util.sendTitle(lose, "&c&lPRZEGRANA");
-            Util.sendSubTitle(lose, "&8>> &7Zostaliscie pokonani przez przeciwna &cdruzyne&7!");
+            Util.sendTitle(lose, "&c&lLOSE");
+            Util.sendSubTitle(lose, "&8>> &7You was defeated by enemy &cteam&7!");
         }
         for(Player win : winners){
             win.getInventory().clear();
             win.getInventory().setArmorContents(new ItemStack[4]);
-            Util.sendTitle(win, "&a&lZWYCIESTWO");
-            Util.sendSubTitle(win, "&8>> &7Pokonaliscie cala przeciwna &cdruzyne&7!");
+            Util.sendTitle(win, "&a&lWIN");
+            Util.sendSubTitle(win, "&8>> &7You are defeated enemy &cteam&7!");
             Util.spawnFireworks(win.getLocation(), 3);
         }
         skyCastle.setStatus(ArenaStatus.RESTARTING);
@@ -339,7 +339,7 @@ public class SkyCastleManager {
                     player.teleport(Main.getMainLobbyLocation());
                     player.getInventory().setItem(4, ItemUtil.menu);
                     player.getInventory().setItem(6, ItemUtil.magicPearl);
-                    player.getInventory().setItem(2, ItemUtil.gadzety);
+                    player.getInventory().setItem(2, ItemUtil.gadgets);
                     for(Player online : Bukkit.getOnlinePlayers()){
                         if(!online.canSee(player)){
                             online.showPlayer(player);
@@ -349,15 +349,16 @@ public class SkyCastleManager {
                     u.setSkyCastle(null);
                     double points = Util.round((u.getGameKills()*1.8)+(u.getGameAssists()*1.2)+(u.getGameGrenades()*1.3)+(u.getGameKapliczki()*1.6)+(u.getGameNumbers()*1.4), 2);
                     int coinsGained = (int)(points*4.5);
-                    Util.sendMessage(player, "&8&m==============&8 ( &6PODSUMOWANIE &8) &8&m===============" +
-                            "\n&8&m==&7> &7Laczna ilosc zabojstw: &6" + u.getGameKills() +
-                            "\n&8&m==&7> &7Laczna ilosc asyst: &6" + u.getGameAssists() +
-                            "\n&8&m==&7> &7Uzyte granaty: &6" + u.getGameGrenades() +
-                            "\n&8&m==&7> &7Przejete kapliczki: &6" + u.getGameKapliczki() +
-                            "\n&8&m==&7> &7Ilosc sekund przejmowania w sumie: &6" + u.getGameNumbers() +
-                            "\n&8&m==&7> &7W sumie zdobyles &6" + points + " &7punktow w tej grze!" +
-                            "\n&8&m==&7> &7Otrzymujesz dodatkowo &c" + coinsGained + " &6coinsow&7!" +
-                            "\n&8&m==============&8 ( &cdineron.net &8) &8&m===============");
+                    Util.sendMessage(player, "&8&m==============&8 ( &6SUMMARY &8) &8&m===============" +
+                            "\n&8&m==&7> &7Total kills: &6" + u.getGameKills() +
+                            "\n&8&m==&7> &7Total assists: &6" + u.getGameAssists() +
+                            "\n&8&m==&7> &7Used grenades: &6" + u.getGameGrenades() +
+                            "\n&8&m==&7> &7Captured shrines: &6" + u.getGameKapliczki() +
+                            "\n&8&m==&7> &7Total seconds of capturing: &6" + u.getGameNumbers() +
+                            "\n&8&m==&7> &7In total, you earned &6" + points + " &7points in this game!" +
+                            "\n&8&m==&7> &7Additionally, you receive &c" + coinsGained + " &6coins&7!" +
+                            "\n&8&m==============&8 ( &6SUMMARY &8) &8&m===============");
+
                     u.addCoins(coinsGained);
                     if(points >= 87.5){
                         int rewardStars = 1;
@@ -367,7 +368,7 @@ public class SkyCastleManager {
                             need += 87.5;
                         }
                         u.addStars(rewardStars);
-                        Util.sendMessage(Bukkit.getOnlinePlayers(), "&e&lGWIAZDKI &8&m=||=&7 Gracz &c" + u.getLastName() + " &7zdobyl &6" + rewardStars + "&e✪ gwiazdke/i &7za &awspaniale statystyki &7w grze!");
+                        Util.sendMessage(Bukkit.getOnlinePlayers(), "&e&lSTARS &8&m=||=&7 Player &c" + u.getLastName() + " &7got &6" + rewardStars + "&e✪ star/s &7for &abeautiful summary &7in game!");
                         Team team = Main.getScoreboard().getTeam(player.getName());
                         team.setSuffix(Util.fixColors("&8 &6" + u.getStars() + " &e&l✪"));
                     }
@@ -419,7 +420,7 @@ public class SkyCastleManager {
         if(Main.getArenasConfig().build().getConfigurationSection("arenas") == null){
             return;
         }
-        Logger.info("[SkyCastle-Manager] Rozpoczynam konfiguracje aren...");
+        Logger.info("[SkyCastle-Manager] Starting arena configurations...");
         for(String s : Main.getArenasConfig().build().getConfigurationSection("arenas").getKeys(false)){
             ConfigurationSection section = Main.getArenasConfig().build().getConfigurationSection("arenas." + s);
             SkyCastle skyCastle = new SkyCastle(s, section.getString("mapName"), section.getInt("maxPlayers"), section.getInt("minPlayers"), section.getInt("startTime"), section.getInt("endTime"));

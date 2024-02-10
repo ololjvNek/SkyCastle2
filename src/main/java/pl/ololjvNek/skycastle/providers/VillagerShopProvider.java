@@ -21,7 +21,7 @@ public class VillagerShopProvider implements InventoryProvider {
             .id("VillagerShop")
             .provider(new VillagerShopProvider())
             .size(3, 9)
-            .title(Util.fixColors("&cSKLEP"))
+            .title(Util.fixColors("&cSHOP"))
             .build();
 
     @Override
@@ -39,27 +39,27 @@ public class VillagerShopProvider implements InventoryProvider {
                             if (Util.isPlayerHasItem(player, itemCategory.getCost())) {
                                 player.getInventory().removeItem(itemCategory.getCost());
                                 Util.categoryOptions(player, itemCategory);
-                                Util.sendTitle(player, "&8>> &aPoprawnie zakupiono przedmiot/ulepszenie!");
+                                Util.sendTitle(player, "&8>> &aItem/upgrade purchased successfully!");
                             } else {
                                 player.closeInventory();
-                                Util.sendTitle(player, "&cNie posiadasz wystarczajaco run!");
+                                Util.sendTitle(player, "&cYou don't have enough runes!");
                             }
                         }));
                     }else if(itemCategory.getPermission() != null && !player.hasPermission(itemCategory.getPermission())){
                         ItemBuilder ib = new ItemBuilder(itemCategory.getGuiItem().clone());
                         ib.addLoreLine("");
-                        ib.addLoreLine(Util.fixColors("&8>> &cTen schemat nie zostal przez Ciebie odblokowany!"));
-                        ib.addLoreLine(Util.fixColors("&8>> &cOdblokuj go w lobby otwierajac menu i sklep!"));
+                        ib.addLoreLine(Util.fixColors("&8>> &cThis schematic has not been unlocked by you!"));
+                        ib.addLoreLine(Util.fixColors("&8>> &cUnlock it in the lobby by opening the menu and shop!"));
                         inventoryContents.set(row2, i2, ClickableItem.empty(ib.toItemStack()));
                     }else if(itemCategory.getPermission() != null && player.hasPermission(itemCategory.getPermission())){
                         inventoryContents.set(row2, i2, ClickableItem.of(itemCategory.getGuiItem().clone(), e2 -> {
                             if (Util.isPlayerHasItem(player, itemCategory.getCost())) {
                                 player.getInventory().removeItem(itemCategory.getCost());
                                 Util.categoryOptions(player, itemCategory);
-                                Util.sendTitle(player, "&8>> &aPoprawnie zakupiono przedmiot/ulepszenie!");
+                                Util.sendTitle(player, "&8>> &aItem/upgrade purchased successfully!");
                             } else {
                                 player.closeInventory();
-                                Util.sendTitle(player, "&cNie posiadasz wystarczajaco run!");
+                                Util.sendTitle(player, "&cYou don't have enough runes!");
                             }
                         }));
                     }
@@ -69,10 +69,11 @@ public class VillagerShopProvider implements InventoryProvider {
                         row2++;
                     }
                 }
-                inventoryContents.set(2, 8, ClickableItem.of(new ItemBuilder(Material.FENCE_GATE).setName(Util.fixColors("&8>> &cPowrot")).toItemStack(), ee-> {
+                inventoryContents.set(2, 8, ClickableItem.of(new ItemBuilder(Material.FENCE_GATE).setName(Util.fixColors("&8>> &cBack")).toItemStack(), ee-> {
                     player.closeInventory();
                     INVENTORY.open(player);
                 }));
+
             }));
             i++;
             if(i >= 8){

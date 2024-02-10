@@ -37,22 +37,23 @@ public class SejfProvider implements InventoryProvider {
         if(u.getSkyCastle() != null){
             SkyCastle skyCastle = u.getSkyCastle();
             if(skyCastle.getTeamIn(player).equals("RED")){
-                ItemStack sejf = new ItemBuilder(Material.GOLD_BLOCK, 1).setName(Util.fixColors("&8{o} &6Paid in runes &8{o}")).setLore("", Util.fixColors("  &8>> &c" + skyCastle.getRedRunes())).toItemStack();
-                ItemStack wplacrune = new ItemBuilder(Material.PRISMARINE_SHARD, 1).setName(Util.fixColors("&8{o} &bPay in rune/s &8{o}")).setLore(Util.fixColors("&7Click &bLPM, &7to pay in &61 rune"), Util.fixColors("&7Click &bPPM, &7to pay all runes from your equipment")).toItemStack();
-                ItemStack listawplaconych = new ItemBuilder(Material.CHEST, 1).setName(Util.fixColors("&8{o} &eLista graczy ktorzy wplacili runy &8{o}")).toItemStack();
-                ItemStack sklep = new ItemBuilder(Material.NETHER_STAR, 1).setName(Util.fixColors("&8{o} &aSklep za runy &8{o}")).toItemStack();
+                ItemStack sejf = new ItemBuilder(Material.GOLD_BLOCK, 1).setName(Util.fixColors("&8{o} &6Paid in runes &8{o}")).setLore("", Util.fixColors("  &8>> &c" + skyCastle.getBlueRunes())).toItemStack();
+                ItemStack wplacrune = new ItemBuilder(Material.PRISMARINE_SHARD, 1).setName(Util.fixColors("&8{o} &bPay in runes/y &8{o}")).setLore(Util.fixColors("&7Click &bLPM, &7to pay in &61 rune"), Util.fixColors("&7Click &bPPM, &7to pay all runes from your equipment")).toItemStack();
+                ItemStack listawplaconych = new ItemBuilder(Material.CHEST, 1).setName(Util.fixColors("&8{o} &eList of players deposit runes &8{o}")).toItemStack();
+                ItemStack sklep = new ItemBuilder(Material.NETHER_STAR, 1).setName(Util.fixColors("&8{o} &aShop for runes &8{o}")).toItemStack();
                 inventoryContents.set(2, 2, ClickableItem.empty(sejf));
                 inventoryContents.set(1, 4, ClickableItem.of(sklep, e -> {
                     inventoryContents.fill(ClickableItem.empty(new ItemStack(Material.AIR)));
-                    ItemStack straznikI = new ItemBuilder(Material.MONSTER_EGG, 1, (byte)51).setName(Util.fixColors("&cStraznik Wyspy &2LvL. &a1")).setLore(Util.fixColors("&7Kliknij, aby przywolac straznika wyspy!"), Util.fixColors("&7Bedzie on strzegl waszej wyspy do konca gry"), Util.fixColors("&7Lub dopoki nie zginie!"), Util.fixColors("&7Maksymalna ilosc straznikow: &b5"), Util.fixColors("&7Koszt straznika: &6300 Run")).toItemStack();
-                    ItemStack straznikII = new ItemBuilder(Material.IRON_BLOCK, 1).setName(Util.fixColors("&cStraznik Wyspy &2LvL. &a2")).setLore(Util.fixColors("&7Kliknij, aby przywolac straznika wyspy!"), Util.fixColors("&7Bedzie on strzegl waszej wyspy do konca gry"), Util.fixColors("&7Lub dopoki nie zginie!"), Util.fixColors("&7Maksymalna ilosc straznikow: &b5"), Util.fixColors("&7Koszt straznika: &6800 Run")).toItemStack();
-                    ItemStack straznikIII = new ItemBuilder(Material.MONSTER_EGG, 1, (byte)56).setName(Util.fixColors("&cStraznik Wyspy &2LvL. &a3")).setLore(Util.fixColors("&7Kliknij, aby przywolac straznika wyspy!"), Util.fixColors("&7Bedzie on strzegl waszej wyspy do konca gry"), Util.fixColors("&7Lub dopoki nie zginie!"), Util.fixColors("&7Maksymalna ilosc straznikow: &b5"), Util.fixColors("&7Koszt straznika: &61500 Run")).toItemStack();
+                    ItemStack straznikI = new ItemBuilder(Material.MONSTER_EGG, 1, (byte)51).setName(Util.fixColors("&cIsland Guard &2LvL. &a1")).setLore(Util.fixColors("&7Click to summon island guard!"), Util.fixColors("&7He will guard your island until the end of the game"), Util.fixColors("&7Or until he dies!"), Util.fixColors("&7Max number of guards: &b5"), Util.fixColors("&7Cost of the guard: &6300 Run")).toItemStack();
+                    ItemStack straznikII = new ItemBuilder(Material.IRON_BLOCK, 1).setName(Util.fixColors("&cIsland Guard &2LvL. &a2")).setLore(Util.fixColors("&7Click to summon island guard!"), Util.fixColors("&7He will guard your island until the end of the game"), Util.fixColors("&7Or until he dies!"), Util.fixColors("&7Max number of guards: &b5"), Util.fixColors("&7Cost of the guard: &6800 Run")).toItemStack();
+                    ItemStack straznikIII = new ItemBuilder(Material.MONSTER_EGG, 1, (byte)56).setName(Util.fixColors("&cIsland Guard &2LvL. &a3")).setLore(Util.fixColors("&7Click to summon island guard!"), Util.fixColors("&7He will guard your island until the end of the game"), Util.fixColors("&7Or until he dies!"), Util.fixColors("&7Max number of guards: &b5"), Util.fixColors("&7Cost of the guard: &61500 Run")).toItemStack();
 
-                    ItemStack druzynaSpeedI = new ItemBuilder(Material.FEATHER, 1).setName(Util.fixColors("&cEfekt dla druzyny &bSpeed &2I")).setLore(Util.fixColors("&7Kazdy z twojej druzyny otrzyma efekt:"), Util.fixColors("&bSpeed &2I &7na &e2 minuty"), Util.fixColors("&7Koszt: &b400 &6run")).toItemStack();
-                    ItemStack druzynaSpeedII = new ItemBuilder(Material.FEATHER, 1).setName(Util.fixColors("&cEfekt dla druzyny &bSpeed &2II")).setLore(Util.fixColors("&7Kazdy z twojej druzyny otrzyma efekt:"), Util.fixColors("&bSpeed &2II &7na &e1 minute i 30 sekund"), Util.fixColors("&7Koszt: &b650 &6run")).toItemStack();
-                    ItemStack druzynaSharpness = new ItemBuilder(Material.DIAMOND_SWORD, 1).setName(Util.fixColors("&cZaklecie &bSharpness &2I &cdla druzyny")).setLore(Util.fixColors("&7Kazdy z twojej druzyny otrzyma zaklecie:"), Util.fixColors("&bSharpness &2I &7na swych mieczach"), Util.fixColors("&7Koszt: &b850 &6run")).toItemStack();
-                    ItemStack druzynaProtection = new ItemBuilder(Material.DIAMOND_CHESTPLATE, 1).setName(Util.fixColors("&cZaklecie &bProtection &2II &cdla druzyny")).setLore(Util.fixColors("&7Kazdy z twojej druzyny otrzyma zaklecie:"), Util.fixColors("&bProtection &2II &7na swych zbrojach"), Util.fixColors("&7Koszt: &b1100 &6run")).toItemStack();
-                    ItemStack druzynaStrength = new ItemBuilder(Material.REDSTONE, 1).setName(Util.fixColors("&cEfekt dla druzyny &bStrength &2I")).setLore(Util.fixColors("&7Kazdy z twojej druzyny otrzyma efekt:"), Util.fixColors("&bStrength I &7na &e1 minute i 15 sekund"), Util.fixColors("&7Koszt: &b1400 &6run")).toItemStack();
+                    ItemStack druzynaSpeedI = new ItemBuilder(Material.FEATHER, 1).setName(Util.fixColors("&cEffect for team &bSpeed &2I")).setLore(Util.fixColors("&7Each of your team members will receive the effect:"), Util.fixColors("&bSpeed &2I &7for &e2 minutes"), Util.fixColors("&7Cost: &b400 &6run")).toItemStack();
+                    ItemStack druzynaSpeedII = new ItemBuilder(Material.FEATHER, 1).setName(Util.fixColors("&cEffect for team &bSpeed &2II")).setLore(Util.fixColors("&7Each of your team members will receive the effect:"), Util.fixColors("&bSpeed &2II &7for &e1 minute and 30 seconds"), Util.fixColors("&7Cost: &b650 &6run")).toItemStack();
+                    ItemStack druzynaSharpness = new ItemBuilder(Material.DIAMOND_SWORD, 1).setName(Util.fixColors("&cEnchant &bSharpness &2I &cfor team")).setLore(Util.fixColors("&7Each of your team members will receive the enchantment:"), Util.fixColors("&bSharpness &2I &7on their swords"), Util.fixColors("&7Cost: &b850 &6run")).toItemStack();
+                    ItemStack druzynaProtection = new ItemBuilder(Material.DIAMOND_CHESTPLATE, 1).setName(Util.fixColors("&cEnchant &bProtection &2II &cfor team")).setLore(Util.fixColors("&7Each of your team members will receive the enchantment:"), Util.fixColors("&bProtection &2II &7on their armors"), Util.fixColors("&7Cost: &b1100 &6run")).toItemStack();
+                    ItemStack druzynaStrength = new ItemBuilder(Material.REDSTONE, 1).setName(Util.fixColors("&cEffect for team &bStrength &2I")).setLore(Util.fixColors("&7Each of your team members will receive the effect:"), Util.fixColors("&bStrength I &7for &e1 minute and 15 seconds"), Util.fixColors("&7Cost: &b1400 &6run")).toItemStack();
+
                     setBackground(inventoryContents);
                     inventoryContents.set(2, 2, ClickableItem.of(druzynaSpeedI, ee -> {
                         if(skyCastle.getRedRunes() < 400){
@@ -64,7 +65,7 @@ public class SejfProvider implements InventoryProvider {
                         for(Player red : skyCastle.getRedTeam()){
                             red.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 20*120, 0));
                             Util.sendTitle(red, "");
-                            Util.sendSubTitle(red, "&8>> &7Cala druzyna otrzymala &bSPEED &2I &7na &a2 minuty");
+                            Util.sendSubTitle(red, "&8>> &7All your teammates got &bSPEED &2I &7for &a2 minutes");
                         }
                     }));
                     inventoryContents.set(2, 3, ClickableItem.of(druzynaSpeedII, ee -> {
@@ -212,7 +213,7 @@ public class SejfProvider implements InventoryProvider {
                         int row = 0,slot = 0;
                         for(Player p : skyCastle.getRedTeam()){
                             User redUser = UserManager.getUser(p);
-                            ItemStack is = new ItemBuilder(Material.SKULL_ITEM, 1, (byte)3).setSkullOwner(p.getName()).setName(Util.fixColors("&6" + p.getName())).setLore(Util.fixColors("&8{o} &7Aktualnie wplacil: &c" + redUser.getGivedRunes())).toItemStack();
+                            ItemStack is = new ItemBuilder(Material.SKULL_ITEM, 1, (byte)3).setSkullOwner(p.getName()).setName(Util.fixColors("&6" + p.getName())).setLore(Util.fixColors("&8{o} &7Deposited: &c" + redUser.getGivedRunes())).toItemStack();
                             inventoryContents.set(row, slot, ClickableItem.empty(is));
                             slot++;
                             if(slot >= 8){
@@ -225,7 +226,7 @@ public class SejfProvider implements InventoryProvider {
                         int row = 0,slot = 0;
                         for(Player p : skyCastle.getBlueTeam()){
                             User redUser = UserManager.getUser(p);
-                            ItemStack is = new ItemBuilder(Material.SKULL_ITEM, 1, (byte)3).setSkullOwner(p.getName()).setName(Util.fixColors("&6" + p.getName())).setLore(Util.fixColors("&8{o} &7Aktualnie wplacil: &c" + redUser.getGivedRunes())).toItemStack();
+                            ItemStack is = new ItemBuilder(Material.SKULL_ITEM, 1, (byte)3).setSkullOwner(p.getName()).setName(Util.fixColors("&6" + p.getName())).setLore(Util.fixColors("&8{o} &7Deposited: &c" + redUser.getGivedRunes())).toItemStack();
                             inventoryContents.set(row, slot, ClickableItem.empty(is));
                             slot++;
                             if(slot >= 8){
@@ -238,20 +239,21 @@ public class SejfProvider implements InventoryProvider {
             }else if(skyCastle.getTeamIn(player).equals("BLUE")){
                 ItemStack sejf = new ItemBuilder(Material.GOLD_BLOCK, 1).setName(Util.fixColors("&8{o} &6Paid in runes &8{o}")).setLore("", Util.fixColors("  &8>> &c" + skyCastle.getBlueRunes())).toItemStack();
                 ItemStack wplacrune = new ItemBuilder(Material.PRISMARINE_SHARD, 1).setName(Util.fixColors("&8{o} &bPay in runes/y &8{o}")).setLore(Util.fixColors("&7Click &bLPM, &7to pay in &61 rune"), Util.fixColors("&7Click &bPPM, &7to pay all runes from your equipment")).toItemStack();
-                ItemStack listawplaconych = new ItemBuilder(Material.CHEST, 1).setName(Util.fixColors("&8{o} &eLista graczy ktorzy wplacili runy &8{o}")).toItemStack();
-                ItemStack sklep = new ItemBuilder(Material.NETHER_STAR, 1).setName(Util.fixColors("&8{o} &aSklep za runy &8{o}")).toItemStack();
+                ItemStack listawplaconych = new ItemBuilder(Material.CHEST, 1).setName(Util.fixColors("&8{o} &eList of players deposit runes &8{o}")).toItemStack();
+                ItemStack sklep = new ItemBuilder(Material.NETHER_STAR, 1).setName(Util.fixColors("&8{o} &aShop for runes &8{o}")).toItemStack();
                 inventoryContents.set(2, 2, ClickableItem.empty(sejf));
                 inventoryContents.set(1, 4, ClickableItem.of(sklep, e -> {
                     inventoryContents.fill(ClickableItem.empty(new ItemStack(Material.AIR)));
-                    ItemStack straznikI = new ItemBuilder(Material.MONSTER_EGG, 1, (byte)51).setName(Util.fixColors("&cStraznik Wyspy &2LvL. &a1")).setLore(Util.fixColors("&7Kliknij, aby przywolac straznika wyspy!"), Util.fixColors("&7Bedzie on strzegl waszej wyspy do konca gry"), Util.fixColors("&7Lub dopoki nie zginie!"), Util.fixColors("&7Maksymalna ilosc straznikow: &b5"), Util.fixColors("&7Koszt straznika: &6300 Run")).toItemStack();
-                    ItemStack straznikII = new ItemBuilder(Material.IRON_BLOCK, 1).setName(Util.fixColors("&cStraznik Wyspy &2LvL. &a2")).setLore(Util.fixColors("&7Kliknij, aby przywolac straznika wyspy!"), Util.fixColors("&7Bedzie on strzegl waszej wyspy do konca gry"), Util.fixColors("&7Lub dopoki nie zginie!"), Util.fixColors("&7Maksymalna ilosc straznikow: &b5"), Util.fixColors("&7Koszt straznika: &6800 Run")).toItemStack();
-                    ItemStack straznikIII = new ItemBuilder(Material.MONSTER_EGG, 1, (byte)56).setName(Util.fixColors("&cStraznik Wyspy &2LvL. &a3")).setLore(Util.fixColors("&7Kliknij, aby przywolac straznika wyspy!"), Util.fixColors("&7Bedzie on strzegl waszej wyspy do konca gry"), Util.fixColors("&7Lub dopoki nie zginie!"), Util.fixColors("&7Maksymalna ilosc straznikow: &b5"), Util.fixColors("&7Koszt straznika: &61500 Run")).toItemStack();
+                    ItemStack straznikI = new ItemBuilder(Material.MONSTER_EGG, 1, (byte)51).setName(Util.fixColors("&cIsland Guard &2LvL. &a1")).setLore(Util.fixColors("&7Click to summon island guard!"), Util.fixColors("&7He will guard your island until the end of the game"), Util.fixColors("&7Or until he dies!"), Util.fixColors("&7Max number of guards: &b5"), Util.fixColors("&7Cost of the guard: &6300 Run")).toItemStack();
+                    ItemStack straznikII = new ItemBuilder(Material.IRON_BLOCK, 1).setName(Util.fixColors("&cIsland Guard &2LvL. &a2")).setLore(Util.fixColors("&7Click to summon island guard!"), Util.fixColors("&7He will guard your island until the end of the game"), Util.fixColors("&7Or until he dies!"), Util.fixColors("&7Max number of guards: &b5"), Util.fixColors("&7Cost of the guard: &6800 Run")).toItemStack();
+                    ItemStack straznikIII = new ItemBuilder(Material.MONSTER_EGG, 1, (byte)56).setName(Util.fixColors("&cIsland Guard &2LvL. &a3")).setLore(Util.fixColors("&7Click to summon island guard!"), Util.fixColors("&7He will guard your island until the end of the game"), Util.fixColors("&7Or until he dies!"), Util.fixColors("&7Max number of guards: &b5"), Util.fixColors("&7Cost of the guard: &61500 Run")).toItemStack();
 
-                    ItemStack druzynaSpeedI = new ItemBuilder(Material.FEATHER, 1).setName(Util.fixColors("&cEfekt dla druzyny &bSpeed &2I")).setLore(Util.fixColors("&7Kazdy z twojej druzyny otrzyma efekt:"), Util.fixColors("&bSpeed &2I &7na &e2 minuty"), Util.fixColors("&7Koszt: &b400 &6run")).toItemStack();
-                    ItemStack druzynaSpeedII = new ItemBuilder(Material.FEATHER, 1).setName(Util.fixColors("&cEfekt dla druzyny &bSpeed &2II")).setLore(Util.fixColors("&7Kazdy z twojej druzyny otrzyma efekt:"), Util.fixColors("&bSpeed &2II &7na &e1 minute i 30 sekund"), Util.fixColors("&7Koszt: &b650 &6run")).toItemStack();
-                    ItemStack druzynaSharpness = new ItemBuilder(Material.DIAMOND_SWORD, 1).setName(Util.fixColors("&cZaklecie &bSharpness &2I &cdla druzyny")).setLore(Util.fixColors("&7Kazdy z twojej druzyny otrzyma zaklecie:"), Util.fixColors("&bSharpness &2I &7na swych mieczach"), Util.fixColors("&7Koszt: &b850 &6run")).toItemStack();
-                    ItemStack druzynaProtection = new ItemBuilder(Material.DIAMOND_CHESTPLATE, 1).setName(Util.fixColors("&cZaklecie &bProtection &2II &cdla druzyny")).setLore(Util.fixColors("&7Kazdy z twojej druzyny otrzyma zaklecie:"), Util.fixColors("&bProtection &2II &7na swych zbrojach"), Util.fixColors("&7Koszt: &b1100 &6run")).toItemStack();
-                    ItemStack druzynaStrength = new ItemBuilder(Material.REDSTONE, 1).setName(Util.fixColors("&cEfekt dla druzyny &bStrength &2I")).setLore(Util.fixColors("&7Kazdy z twojej druzyny otrzyma efekt:"), Util.fixColors("&bStrength I &7na &e1 minute i 15 sekund"), Util.fixColors("&7Koszt: &b1400 &6run")).toItemStack();
+                    ItemStack druzynaSpeedI = new ItemBuilder(Material.FEATHER, 1).setName(Util.fixColors("&cEffect for team &bSpeed &2I")).setLore(Util.fixColors("&7Each of your team members will receive the effect:"), Util.fixColors("&bSpeed &2I &7for &e2 minutes"), Util.fixColors("&7Cost: &b400 &6run")).toItemStack();
+                    ItemStack druzynaSpeedII = new ItemBuilder(Material.FEATHER, 1).setName(Util.fixColors("&cEffect for team &bSpeed &2II")).setLore(Util.fixColors("&7Each of your team members will receive the effect:"), Util.fixColors("&bSpeed &2II &7for &e1 minute and 30 seconds"), Util.fixColors("&7Cost: &b650 &6run")).toItemStack();
+                    ItemStack druzynaSharpness = new ItemBuilder(Material.DIAMOND_SWORD, 1).setName(Util.fixColors("&cEnchant &bSharpness &2I &cfor team")).setLore(Util.fixColors("&7Each of your team members will receive the enchantment:"), Util.fixColors("&bSharpness &2I &7on their swords"), Util.fixColors("&7Cost: &b850 &6run")).toItemStack();
+                    ItemStack druzynaProtection = new ItemBuilder(Material.DIAMOND_CHESTPLATE, 1).setName(Util.fixColors("&cEnchant &bProtection &2II &cfor team")).setLore(Util.fixColors("&7Each of your team members will receive the enchantment:"), Util.fixColors("&bProtection &2II &7on their armors"), Util.fixColors("&7Cost: &b1100 &6run")).toItemStack();
+                    ItemStack druzynaStrength = new ItemBuilder(Material.REDSTONE, 1).setName(Util.fixColors("&cEffect for team &bStrength &2I")).setLore(Util.fixColors("&7Each of your team members will receive the effect:"), Util.fixColors("&bStrength I &7for &e1 minute and 15 seconds"), Util.fixColors("&7Cost: &b1400 &6run")).toItemStack();
+
                     setBackground(inventoryContents);
                     inventoryContents.set(2, 2, ClickableItem.of(druzynaSpeedI, ee -> {
                         if(skyCastle.getBlueRunes() < 400){
@@ -263,7 +265,7 @@ public class SejfProvider implements InventoryProvider {
                         for(Player red : skyCastle.getBlueTeam()){
                             red.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 20*120, 0));
                             Util.sendTitle(red, "");
-                            Util.sendSubTitle(red, "&8>> &7Cala druzyna otrzymala &bSPEED &2I &7na &a2 minuty");
+                            Util.sendSubTitle(red, "&8>> &7All your teammates got  &bSPEED &2I &7for &a2 minutes");
                         }
                     }));
                     inventoryContents.set(2, 3, ClickableItem.of(druzynaSpeedII, ee -> {
@@ -411,7 +413,7 @@ public class SejfProvider implements InventoryProvider {
                         int row = 0,slot = 0;
                         for(Player p : skyCastle.getRedTeam()){
                             User redUser = UserManager.getUser(p);
-                            ItemStack is = new ItemBuilder(Material.SKULL_ITEM, 1, (byte)3).setSkullOwner(p.getName()).setName(Util.fixColors("&6" + p.getName())).setLore(Util.fixColors("&8{o} &7Aktualnie wplacil: &c" + redUser.getGivedRunes())).toItemStack();
+                            ItemStack is = new ItemBuilder(Material.SKULL_ITEM, 1, (byte)3).setSkullOwner(p.getName()).setName(Util.fixColors("&6" + p.getName())).setLore(Util.fixColors("&8{o} &7Deposited: &c" + redUser.getGivedRunes())).toItemStack();
                             inventoryContents.set(row, slot, ClickableItem.empty(is));
                             slot++;
                             if(slot >= 8){
@@ -424,7 +426,7 @@ public class SejfProvider implements InventoryProvider {
                         int row = 0,slot = 0;
                         for(Player p : skyCastle.getBlueTeam()){
                             User redUser = UserManager.getUser(p);
-                            ItemStack is = new ItemBuilder(Material.SKULL_ITEM, 1, (byte)3).setSkullOwner(p.getName()).setName(Util.fixColors("&6" + p.getName())).setLore(Util.fixColors("&8{o} &7Aktualnie wplacil: &c" + redUser.getGivedRunes())).toItemStack();
+                            ItemStack is = new ItemBuilder(Material.SKULL_ITEM, 1, (byte)3).setSkullOwner(p.getName()).setName(Util.fixColors("&6" + p.getName())).setLore(Util.fixColors("&8{o} &7Deposited: &c" + redUser.getGivedRunes())).toItemStack();
                             inventoryContents.set(row, slot, ClickableItem.empty(is));
                             slot++;
                             if(slot >= 8){

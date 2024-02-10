@@ -10,7 +10,7 @@ import pl.ololjvNek.skycastle.utils.Util;
 public class WedkaCommand extends PlayerCommand {
 
     public WedkaCommand() {
-        super("wedka", "wedka", "wedka", "core.wedka");
+        super("magicrod", "wedka", "wedka", "core.magicrod");
     }
 
     @Override

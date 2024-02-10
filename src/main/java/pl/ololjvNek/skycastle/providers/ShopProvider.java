@@ -24,7 +24,7 @@ public class ShopProvider implements InventoryProvider {
             .id("Menu")
             .provider(new ShopProvider())
             .size(5, 9)
-            .title(Util.fixColors("&cSklep"))
+            .title(Util.fixColors("&cShop"))
             .build();
 
     @Override
@@ -46,11 +46,11 @@ public class ShopProvider implements InventoryProvider {
             }
             if(posiadane){
                 ib.addLoreLine("");
-                ib.addLoreLine(Util.fixColors("&aPosiadane"));
+                ib.addLoreLine(Util.fixColors("&aOwned"));
                 inventoryContents.set(row,slot, ClickableItem.empty(ib.toItemStack()));
             }else{
                 ib.addLoreLine("");
-                ib.addLoreLine(Util.fixColors("&8>> &7Kliknij LPM, aby &6zakupic"));
+                ib.addLoreLine(Util.fixColors("&8>> &7Click LPM to &6purchase"));
                 inventoryContents.set(row,slot, ClickableItem.of(ib.toItemStack(), e-> {
                     if(u.getCoins() >= permissionShop.getCost()){
                         u.removeCoins(permissionShop.getCost());
@@ -59,14 +59,15 @@ public class ShopProvider implements InventoryProvider {
                         }else{
                             u.getAddons().add(permissionShop.getAddon());
                         }
-                        Util.sendTitle(player, "&a&lSKLEP");
-                        Util.sendSubTitle(player, "&8>> &7Zakupiles przedmiot: " + permissionShop.getGuiName());
+                        Util.sendTitle(player, "&a&lSHOP");
+                        Util.sendSubTitle(player, "&8>> &7You purchased: " + permissionShop.getGuiName());
                         player.closeInventory();
                     }else{
-                        Util.sendTitle(player, "&cNie stac cie!");
+                        Util.sendTitle(player, "&cNot enough coins!");
                     }
                 }));
             }
+
             slot++;
             if(slot >= 8){
                 row++;

@@ -11,7 +11,6 @@ import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 import org.bukkit.scheduler.BukkitRunnable;
-import pl.ololjvNek.antilogout.CombatAPI;
 import pl.ololjvNek.skycastle.Main;
 import pl.ololjvNek.skycastle.data.User;
 import pl.ololjvNek.skycastle.managers.UserManager;
@@ -29,40 +28,40 @@ public class BoosterListener implements Listener {
     @EventHandler
     public void onInteract(PlayerInteractEvent e){
         if(e.getItem() != null){
-            if(e.getItem().isSimilar(ItemUtil.granatOslepiajacy)){
-                e.getPlayer().getInventory().removeItem(ItemUtil.granatOslepiajacy);
+            if(e.getItem().isSimilar(ItemUtil.blindnessGrenade)){
+                e.getPlayer().getInventory().removeItem(ItemUtil.blindnessGrenade);
                 Snowball snowball = (Snowball) e.getPlayer().getWorld().spawnEntity(e.getPlayer().getEyeLocation(), EntityType.SNOWBALL);
                 snowball.setVelocity(e.getPlayer().getLocation().getDirection().multiply(2));
                 snowball.setShooter(e.getPlayer());
                 snowball.setCustomName("OSLEPIENIE");
                 UserManager.getUser(e.getPlayer()).addGameGrenades(1);
             }
-            if(e.getItem().isSimilar(ItemUtil.granatOslabiajacy)){
-                e.getPlayer().getInventory().removeItem(ItemUtil.granatOslabiajacy);
+            if(e.getItem().isSimilar(ItemUtil.weakeningGrenade)){
+                e.getPlayer().getInventory().removeItem(ItemUtil.weakeningGrenade);
                 Snowball snowball = (Snowball) e.getPlayer().getWorld().spawnEntity(e.getPlayer().getEyeLocation(), EntityType.SNOWBALL);
                 snowball.setVelocity(e.getPlayer().getLocation().getDirection().multiply(2));
                 snowball.setShooter(e.getPlayer());
                 snowball.setCustomName("OSLABIENIE");
                 UserManager.getUser(e.getPlayer()).addGameGrenades(1);
             }
-            if(e.getItem().isSimilar(ItemUtil.granatOdepchniecia)){
-                e.getPlayer().getInventory().removeItem(ItemUtil.granatOdepchniecia);
+            if(e.getItem().isSimilar(ItemUtil.repulsionGrenade)){
+                e.getPlayer().getInventory().removeItem(ItemUtil.repulsionGrenade);
                 Snowball snowball = (Snowball) e.getPlayer().getWorld().spawnEntity(e.getPlayer().getEyeLocation(), EntityType.SNOWBALL);
                 snowball.setVelocity(e.getPlayer().getLocation().getDirection().multiply(2));
                 snowball.setShooter(e.getPlayer());
                 snowball.setCustomName("ODEPCHNIECIE");
                 UserManager.getUser(e.getPlayer()).addGameGrenades(1);
             }
-            if(e.getItem().isSimilar(ItemUtil.granatPajeczy)){
-                e.getPlayer().getInventory().removeItem(ItemUtil.granatPajeczy);
+            if(e.getItem().isSimilar(ItemUtil.webGrenade)){
+                e.getPlayer().getInventory().removeItem(ItemUtil.webGrenade);
                 Snowball snowball = (Snowball) e.getPlayer().getWorld().spawnEntity(e.getPlayer().getEyeLocation(), EntityType.SNOWBALL);
                 snowball.setVelocity(e.getPlayer().getLocation().getDirection().multiply(2));
                 snowball.setShooter(e.getPlayer());
                 snowball.setCustomName("PAJECZYNA");
                 UserManager.getUser(e.getPlayer()).addGameGrenades(1);
             }
-            if(e.getItem().isSimilar(ItemUtil.granatPodbicia)){
-                e.getPlayer().getInventory().removeItem(ItemUtil.granatPodbicia);
+            if(e.getItem().isSimilar(ItemUtil.bounceGrenade)){
+                e.getPlayer().getInventory().removeItem(ItemUtil.bounceGrenade);
                 Snowball snowball = (Snowball) e.getPlayer().getWorld().spawnEntity(e.getPlayer().getEyeLocation(), EntityType.SNOWBALL);
                 snowball.setVelocity(e.getPlayer().getLocation().getDirection().multiply(2));
                 snowball.setShooter(e.getPlayer());
